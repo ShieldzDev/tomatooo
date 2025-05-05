@@ -1,0 +1,21 @@
+<div id="prediction-result" class="result-box">
+    <h2>Prediction Result</h2>
+    
+    <div class="quality-result">
+        <h3>Quality</h3>
+        <p>Status: <span class="pred-class">{{ result.quality.class }}</span></p>
+        <p>Confidence: <span class="pred-confidence">{{ "%.2f"|format(result.quality.confidence) }}%</span></p>
+    </div>
+
+    {% if result.type %}
+    <div class="type-result">
+        <h3>Type</h3>
+        <p>Variety: <span class="pred-class">{{ result.type.class|replace('_', ' ')|title }}</span></p>
+        <p>Confidence: <span class="pred-confidence">{{ "%.2f"|format(result.type.confidence) }}%</span></p>
+    </div>
+    {% else %}
+    <div class="type-result">
+        <p>Type prediction skipped due to low quality</p>
+    </div>
+    {% endif %}
+</div>
